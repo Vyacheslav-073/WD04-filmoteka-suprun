@@ -7,9 +7,17 @@ if ( mysqli_connect_error() ) {
     die("Ошибка подключения к базе данных.");
 }
 
-$resultSuccess = '';
-$resultError = '';
 $errors = array();
+
+// Удаление фильма
+if (@$_GET['action'] == 'delete') {
+    $query = "DELETE FROM films WHERE id = '" . mysqli_real_escape_string($link, $_GET['id']) . "' LIMIT 1";
+    mysqli_query($link, $query);
+    
+    if ( mysqli_affected_rows( $link ) > 0 ) {
+	 	$resultInfo = "Фильм был удален!";
+    }
+}
 
 // Save form data to DB
 if (array_key_exists('newFilm', $_POST)) {
@@ -77,22 +85,32 @@ if ( $result = mysqli_query($link, $query) ){
 <body class="index-page">
 	<div class="container user-content section-page">
 	
-	<?php if ($resultSuccess !=''){?>
-	    <div class="notify--success notify"><?=$resultSuccess?></div>
+	<?php if (@$resultSuccess !=''){?>
+	    <div class="notify notify--info mb-20"><?=$resultSuccess?></div>
     <?php } ?>
-
-        <?php if($resultError !=''){?>
-	  		<div class="notify--error notify"><?=$resultError?></div>
-        <?php } ?>
+        
+    <?php if (@$resultInfo !=''){?>
+	    <div class="notify notify--error mb-20"><?=$resultInfo?></div>
+    <?php } ?>
+       
+    <?php if(@$resultError !=''){?>
+	    <div class="notify notify--error mb-20"><?=$resultError?></div>
+    <?php } ?>
         
 		<div class="title-1">Фильмотека</div>		
     <?php    
-        foreach ($films as $key => $value) {   
+        foreach ($films as $key => $film) {   
     ?>
             <div class="card mb-20">
-                <h4 class="title-4"><?=$films[$key]['title']?></h4>
-                <div class="badge"><?=$films[$key]['genre']?></div>
-			    <div class="badge"><?=$films[$key]['year']?></div>
+                <div class="card__header">
+                    <h4 class="title-4"><?=$film['title']?></h4>
+                    <div class="buttons">
+                        <a href="edit.php?id=<?=$film['id']?>"class="button button--editsmall mr-20">Редактировать</a>
+                        <a href="?action=delete&id=<?=$film['id']?>"class="button button--removesmall">Удалить</a>
+                    </div>
+                </div>
+                <div class="badge"><?=$film['genre']?></div>
+			    <div class="badge"><?=$film['year']?></div>
 		    </div>
     <?php
         }
@@ -131,7 +149,7 @@ if ( $result = mysqli_query($link, $query) ){
 	<script src="libs/jquery-custom-scrollbar/jquery.custom-scrollbar.js"></script>
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIr67yxxPmnF-xb4JVokCVGgLbPtuqxiA"></script><!-- endbuild -->
 	<!-- build:jsMain js/main.js -->
-	<!--<script src="js/main.js"></script><!-- endbuild -->
+	<script src="js/main.js"></script><!-- endbuild -->
 	<script defer="defer" src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </body>
 
