@@ -88,7 +88,7 @@ function film_update($link, $title, $genre, $year, $id, $description) {
 
 		}
 
-		require_once( ROOT . "/functions/image_resize_imagick.php");
+		require_once( ROOT . "/function/image_resize_imagick.php");
 		$target_file = $photoFolderLocation . $db_file_name;
 		$resized_file = $photoFolderLocationMin . $db_file_name;
 		$wmax = 137;

@@ -2,8 +2,7 @@
     <div class="panel-holder mt-30 mb-100">
         <div class="title-3 mt-0">Добавить фильм</div>
 
-        <form action="new.php" method="POST">
-
+        <form action="new.php" method="POST" id ="add-film" enctype="multipart/form-data"> 
         <!-- Показываем ошибки если поля не заполнены -->
         <?php  
 
