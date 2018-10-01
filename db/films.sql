@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Сен 11 2018 г., 20:31
--- Версия сервера: 5.6.38
+-- Время создания: Сен 30 2018 г., 13:26
+-- Версия сервера: 5.5.58-log
 -- Версия PHP: 5.5.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -32,18 +32,19 @@ CREATE TABLE `films` (
   `id` int(11) NOT NULL,
   `title` text NOT NULL,
   `genre` text NOT NULL,
-  `year` int(11) NOT NULL
+  `year` int(11) NOT NULL,
+  `description` text NOT NULL,
+  `photo` char(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `films`
 --
 
-INSERT INTO `films` (`id`, `title`, `genre`, `year`) VALUES
-(1, 'Облачный атлас', 'драма', 2012),
-(2, 'Такси 2', 'комедия', 2000),
-(6, 'Аватар', 'фантастика', 2012),
-(7, 'Элизиум', 'фантастика', 2016);
+INSERT INTO `films` (`id`, `title`, `genre`, `year`, `description`, `photo`) VALUES
+(1, 'Облачный атлас', 'драма', 2012, '', ''),
+(2, 'Такси 2', 'комедия', 2000, '', ''),
+(4, 'Белиберда', 'комедия', 2018, 'Так себе фильмец', '');
 
 --
 -- Индексы сохранённых таблиц
@@ -63,7 +64,7 @@ ALTER TABLE `films`
 -- AUTO_INCREMENT для таблицы `films`
 --
 ALTER TABLE `films`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
