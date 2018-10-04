@@ -6,6 +6,7 @@ require('database.php');
 $link = db_connect();
 
 require('models/films.php');
+require('function/login-functions.php');
 
 // Удаление фильма
 if ( @$_GET['action'] == 'delete') {

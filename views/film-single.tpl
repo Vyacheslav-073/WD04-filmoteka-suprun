@@ -17,8 +17,18 @@
                 </h4>
 
                 <div class="buttons">
-                    <a href="edit.php?id=<?=$film['id']?>" class="button button--editsmall mr-20">Редактировать</a>
-                    <a href="index.php?action=delete&id=<?=$film['id']?>" class="button button--removesmall">Удалить</a>
+                <?php 
+
+				    if ( isset($_SESSION['user']) ) {
+				        if ( $_SESSION['user'] == 'admin' ) { 
+				?>
+				    <a href="edit.php?id=<?=$film['id']?>" class="button button--edit mr-20">Редактировать</a>
+				    <a href="index.php?action=delete&id=<?=$film['id']?>" class="button button--remove">Удалить</a>			
+
+				<?php		
+				            }		
+				        }
+				?>
                 </div>
                 
             </div>

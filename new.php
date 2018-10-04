@@ -3,9 +3,11 @@
 // DB CONNECTION
 require('config.php');
 require('database.php');
+
 $link = db_connect();
 
 require('models/films.php');
+require('function/login-functions.php');
 
 if (array_key_exists('add-film', $_POST)) {
 

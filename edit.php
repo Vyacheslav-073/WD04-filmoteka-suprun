@@ -3,9 +3,11 @@
 // DB CONNECTION
 require('config.php');
 require('database.php');
+
 $link = db_connect();
 
 require('models/films.php');
+require('function/login-functions.php');
 
 //UPDATE film data in DB
 if (array_key_exists('update-film', $_POST)) {

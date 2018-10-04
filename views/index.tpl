@@ -19,8 +19,10 @@
                 </h4>
 
                 <div class="buttons">
-                    <a href="edit.php?id=<?=$film['id']?>" class="button button--editsmall mr-20">Редактировать</a>
-                    <a href="?action=delete&id=<?=$film['id']?>"class="button button--removesmall">Удалить</a>
+                    <?php if ( isAdmin() ) { ?>
+                        <a href="edit.php?id=<?=$film['id']?>" class="button button--editsmall mr-20">Редактировать</a>
+                        <a href="?action=delete&id=<?=$film['id']?>"class="button button--removesmall">Удалить</a>
+                    <?php } ?>
                 </div>
 
             </div>
