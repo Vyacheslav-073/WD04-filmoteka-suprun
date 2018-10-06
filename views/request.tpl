@@ -7,7 +7,7 @@
     </div>
 
     <div class="form-group">
-        <label class="label">Ваш город<input class="input" type="text" placeholder="" name="user-сity"/></label>
+        <label class="label">Ваш город<input class="input" type="text" placeholder="" name="user-city"/></label>
     </div>
 
     <input class="button" type="submit" name="user-submit" value="Сохранить" />
